@@ -1,269 +1,204 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@custom-variant dark (&:is(.dark *));
-
-:root {
-  /* Quest-Ed Modern Learning Platform Theme Colors */
-  --background: #ffffff;
-  --foreground: #2d3748;
-  --card: #ffffff;
-  --card-foreground: #2d3748;
-  --popover: #ffffff;
-  --popover-foreground: #2d3748;
-  --primary: #6366f1;
-  --primary-foreground: #ffffff;
-  --secondary: #f0f4ff;
-  --secondary-foreground: #2d3748;
-  --muted: #e2e8f0;
-  --muted-foreground: #718096;
-  --accent: #ec4899;
-  --accent-foreground: #ffffff;
-  --destructive: #f87171;
-  --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --input: #f7fafc;
-  --ring: rgba(99, 102, 241, 0.2);
-
-  /* Chart colors for learning analytics */
-  --chart-1: #6366f1;
-  --chart-2: #8b5cf6;
-  --chart-3: #d946ef;
-  --chart-4: #ec4899;
-  --chart-5: #f43f5e;
-
-  /* Learning platform specific colors */
-  --success: #10b981;
-  --warning: #f59e0b;
-  --info: #0ea5e9;
-  --learn-primary: #6366f1;
-  --learn-secondary: #ec4899;
-
-  --radius: 0.75rem;
-  --sidebar: #f8fafc;
-  --sidebar-foreground: #1f2937;
-  --sidebar-primary: #0f172a;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #3b82f6;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #cbd5e1;
-  --sidebar-ring: rgba(59, 130, 246, 0.3);
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-.dark {
-  --background: #0f172a;
-  --foreground: #e2e8f0;
-  --card: #1e293b;
-  --card-foreground: #e2e8f0;
-  --popover: #1e293b;
-  --popover-foreground: #e2e8f0;
-  --primary: #6366f1;
-  --primary-foreground: #ffffff;
-  --secondary: #1e293b;
-  --secondary-foreground: #e2e8f0;
-  --muted: #334155;
-  --muted-foreground: #cbd5e1;
-  --accent: #ec4899;
-  --accent-foreground: #ffffff;
-  --destructive: #f87171;
-  --destructive-foreground: #ffffff;
-  --border: #334155;
-  --input: #0f172a;
-  --ring: rgba(99, 102, 241, 0.2);
-  --sidebar: #1e293b;
-  --sidebar-foreground: #e2e8f0;
-  --sidebar-primary: #6366f1;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ec4899;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #334155;
-  --sidebar-ring: rgba(99, 102, 241, 0.2);
-}
+@layer base {
+  /* NEXUS ASGARD THEME
+     Palette: Deep cosmic navy + Electric gold accent + Cool silver text
+     Inspired by: Thor / Asgard / Futuristic Hero Interface
+     Colors: 
+       Gold:    42 92% 56%  (#E8B824)
+       Navy:    230 40% 6%  (#09101A)
+       Silver:  220 15% 85% 
+       Cosmic:  230 35% 10%
+       Red:     0 72% 51%   (alerts)
+  */
+  :root {
+    --background: 230 25% 95%;
+    --foreground: 230 30% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 30% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 30% 8%;
+    --primary: 42 92% 50%;
+    --primary-foreground: 230 40% 6%;
+    --secondary: 230 14% 90%;
+    --secondary-foreground: 230 30% 8%;
+    --muted: 230 14% 92%;
+    --muted-foreground: 230 10% 42%;
+    --accent: 42 92% 50%;
+    --accent-foreground: 230 40% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 230 14% 86%;
+    --input: 230 14% 86%;
+    --ring: 42 92% 50%;
+    --chart-1: 42 92% 50%;
+    --chart-2: 200 70% 50%;
+    --chart-3: 166 62% 48%;
+    --chart-4: 0 72% 51%;
+    --chart-5: 280 65% 60%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 230 10% 26%;
+    --sidebar-primary: 42 92% 50%;
+    --sidebar-primary-foreground: 230 40% 6%;
+    --sidebar-accent: 230 14% 94%;
+    --sidebar-accent-foreground: 230 10% 10%;
+    --sidebar-border: 230 13% 88%;
+    --sidebar-ring: 42 92% 50%;
 
-@theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-info: var(--info);
-  --color-learn-primary: var(--learn-primary);
-  --color-learn-secondary: var(--learn-secondary);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+    --nexus-surface: 230 16% 98%;
+    --nexus-signal: 42 92% 50%;
+    --nexus-warn: 25 95% 53%;
+    --nexus-urgent: 0 72% 51%;
+    --nexus-info: 200 70% 50%;
+    --nexus-success: 152 60% 42%;
+    --nexus-gold: 42 92% 50%;
+    --nexus-lightning: 42 100% 65%;
+  }
+
+  .dark {
+    --background: 230 40% 4%;
+    --foreground: 220 15% 88%;
+    --card: 230 35% 8%;
+    --card-foreground: 220 15% 88%;
+    --popover: 230 35% 8%;
+    --popover-foreground: 220 15% 88%;
+    --primary: 42 92% 56%;
+    --primary-foreground: 230 40% 4%;
+    --secondary: 230 30% 12%;
+    --secondary-foreground: 220 15% 88%;
+    --muted: 230 30% 12%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 42 92% 56%;
+    --accent-foreground: 230 40% 4%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 230 25% 14%;
+    --input: 230 25% 14%;
+    --ring: 42 92% 56%;
+    --chart-1: 42 92% 56%;
+    --chart-2: 200 70% 55%;
+    --chart-3: 166 62% 48%;
+    --chart-4: 0 62% 55%;
+    --chart-5: 280 65% 60%;
+    --sidebar-background: 230 38% 5%;
+    --sidebar-foreground: 220 15% 88%;
+    --sidebar-primary: 42 92% 56%;
+    --sidebar-primary-foreground: 230 40% 4%;
+    --sidebar-accent: 230 30% 10%;
+    --sidebar-accent-foreground: 220 15% 88%;
+    --sidebar-border: 230 25% 12%;
+    --sidebar-ring: 42 92% 56%;
+
+    --nexus-surface: 230 35% 9%;
+    --nexus-signal: 42 92% 56%;
+    --nexus-warn: 25 95% 53%;
+    --nexus-urgent: 0 62% 55%;
+    --nexus-info: 200 70% 55%;
+    --nexus-success: 152 60% 48%;
+    --nexus-gold: 42 92% 56%;
+    --nexus-lightning: 42 100% 70%;
+  }
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
   }
 }
 
-/* Custom animations for learning platform */
-@keyframes slide-in {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
+/* NEXUS ASGARD component utilities */
+@layer components {
+  .nexus-card {
+    @apply rounded-lg border border-border bg-card p-4 transition-all;
   }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
+  .nexus-card-elevated {
+    @apply rounded-lg border border-border bg-card p-4 transition-all;
+    box-shadow: 0 0 0 1px hsl(var(--nexus-gold) / 0.06), 0 2px 12px -2px hsl(230 40% 0% / 0.25);
   }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
+  .nexus-card-elevated:hover {
+    box-shadow: 0 0 0 1px hsl(var(--nexus-gold) / 0.15), 0 4px 20px -4px hsl(230 40% 0% / 0.35);
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  .nexus-signal-dot {
+    @apply h-2 w-2 rounded-full;
   }
-}
-
-@keyframes float-up {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
+  .nexus-glow {
+    box-shadow: 0 0 24px -4px hsl(var(--nexus-gold) / 0.2);
   }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
+  .nexus-glow-strong {
+    box-shadow: 0 0 32px -4px hsl(var(--nexus-gold) / 0.35), 0 0 8px -2px hsl(var(--nexus-gold) / 0.15);
   }
-}
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 8px rgba(99, 102, 241, 0.2), 0 0 16px rgba(236, 72, 153, 0.1);
+  /* Asgard lightning shimmer on border */
+  .nexus-border-glow {
+    position: relative;
   }
-  50% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 32px rgba(236, 72, 153, 0.2);
+  .nexus-border-glow::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--nexus-gold) / 0.3), transparent 40%, transparent 60%, hsl(var(--nexus-gold) / 0.15));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
   }
-}
 
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
+  .nexus-fade-in {
+    animation: nexusFadeIn 0.5s ease-out;
   }
-  50% {
-    background-position: 100% 50%;
+  @keyframes nexusFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-}
-
-.slide-in {
-  animation: slide-in 0.4s ease-out forwards;
-}
-
-.fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-}
-
-.float-up {
-  animation: float-up 0.6s ease-out forwards;
-}
-
-.pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-.gradient-shift {
-  animation: gradient-shift 3s ease infinite;
-  background-size: 200% 200%;
-}
-
-/* Learning platform card styles */
-.course-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 1.125rem;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
-  position: relative;
-}
-
-.course-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.course-card:hover::before {
-  left: 100%;
-}
-
-.course-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.25), 0 0 40px rgba(236, 72, 153, 0.15);
-  border-color: rgba(236, 72, 153, 0.5);
-}
-
-/* Progress bar animations */
-.progress-fill {
-  transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background: linear-gradient(90deg, #6366f1, #ec4899, #6366f1);
-  background-size: 200% 100%;
-  animation: gradient-shift 3s ease infinite;
-}
-
-/* Task and assignment styles */
-.task-item {
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border-radius: 0.875rem;
-  border: 1px solid var(--border);
-}
-
-.task-item:hover {
-  background: linear-gradient(135deg, #f0f4ff, #fce7f3);
-  transform: translateX(4px);
-  border-color: rgba(236, 72, 153, 0.3);
-  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.1);
-}
-
-/* Progress ring and indicators */
-.progress-ring {
-  transition: stroke-dashoffset 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-  filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.15));
+  @keyframes nexusPulse {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+  }
+  .nexus-pulse {
+    animation: nexusPulse 2s ease-in-out infinite;
+  }
+  @keyframes nexusLightning {
+    0%, 100% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 0.2; }
+    30% { opacity: 0.8; }
+    50% { opacity: 0; }
+  }
+  .nexus-lightning {
+    animation: nexusLightning 4s ease-in-out infinite;
+  }
+  @keyframes nexusShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .nexus-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--nexus-gold) / 0.08) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: nexusShimmer 3s ease-in-out infinite;
+  }
+  /* Stars background pattern */
+  .nexus-cosmic-bg {
+    background-image: radial-gradient(1px 1px at 10% 20%, hsl(var(--nexus-gold) / 0.15) 1px, transparent 0),
+                       radial-gradient(1px 1px at 80% 40%, hsl(220 15% 60% / 0.12) 1px, transparent 0),
+                       radial-gradient(1px 1px at 50% 80%, hsl(var(--nexus-gold) / 0.1) 1px, transparent 0),
+                       radial-gradient(1px 1px at 30% 60%, hsl(220 15% 70% / 0.1) 1px, transparent 0);
+  }
 }
